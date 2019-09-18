@@ -1,0 +1,319 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls   s/call   s/call  name    
+ 68.07     19.16    19.16 8112019542     0.00     0.00  volume_get
+ 25.38     26.31     7.14     3600     0.00     0.01  conv_forward
+  3.77     27.37     1.06     1200     0.00     0.00  softmax_forward
+  1.56     27.81     0.44 126793634     0.00     0.00  volume_set
+  0.50     27.95     0.14     3600     0.00     0.00  relu_forward
+  0.43     28.07     0.12     3600     0.00     0.00  pool_forward
+  0.28     28.15     0.08        1     0.08     0.31  load_batch
+  0.07     28.17     0.02    10094     0.00     0.00  make_volume
+  0.00     28.17     0.00    10094     0.00     0.00  free_volume
+  0.00     28.17     0.00     1200     0.00     0.00  copy_volume
+  0.00     28.17     0.00     1200     0.00     0.00  fc_forward
+  0.00     28.17     0.00     1200     0.00     0.02  net_forward
+  0.00     28.17     0.00        3     0.00     0.00  conv_load
+  0.00     28.17     0.00        3     0.00     0.00  make_conv_layer
+  0.00     28.17     0.00        3     0.00     0.00  make_pool_layer
+  0.00     28.17     0.00        3     0.00     0.00  make_relu_layer
+  0.00     28.17     0.00        1     0.00    28.17  do_benchmark
+  0.00     28.17     0.00        1     0.00     0.00  fc_load
+  0.00     28.17     0.00        1     0.00     0.00  free_batch
+  0.00     28.17     0.00        1     0.00     0.00  free_network
+  0.00     28.17     0.00        1     0.00     0.00  get_accuracy
+  0.00     28.17     0.00        1     0.00     0.00  load_cnn_snapshot
+  0.00     28.17     0.00        1     0.00     0.00  make_batch
+  0.00     28.17     0.00        1     0.00     0.00  make_fc_layer
+  0.00     28.17     0.00        1     0.00     0.00  make_network
+  0.00     28.17     0.00        1     0.00     0.00  make_softmax_layer
+  0.00     28.17     0.00        1     0.00    27.85  net_classify
+  0.00     28.17     0.00        1     0.00    28.17  run_classification
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 2 byte(s) for 0.04% of 28.17 seconds
+
+index % time    self  children    called     name
+                0.00   28.17       1/1           main [3]
+[1]    100.0    0.00   28.17       1         do_benchmark [1]
+                0.00   28.17       1/1           run_classification [2]
+-----------------------------------------------
+                0.00   28.17       1/1           do_benchmark [1]
+[2]    100.0    0.00   28.17       1         run_classification [2]
+                0.00   27.85       1/1           net_classify [4]
+                0.08    0.23       1/1           load_batch [11]
+                0.00    0.00       1/1           load_cnn_snapshot [15]
+                0.00    0.00   10000/10094       free_volume [21]
+                0.00    0.00       1/1           get_accuracy [28]
+                0.00    0.00       1/1           free_network [27]
+-----------------------------------------------
+                                                 <spontaneous>
+[3]    100.0    0.00   28.17                 main [3]
+                0.00   28.17       1/1           do_benchmark [1]
+-----------------------------------------------
+                0.00   27.85       1/1           run_classification [2]
+[4]     98.9    0.00   27.85       1         net_classify [4]
+                0.00   27.83    1200/1200        net_forward [5]
+                0.00    0.02    1200/1200        copy_volume [14]
+                0.00    0.00       1/1           make_batch [18]
+                0.00    0.00       1/1           free_batch [26]
+-----------------------------------------------
+                0.00   27.83    1200/1200        net_classify [4]
+[5]     98.8    0.00   27.83    1200         net_forward [5]
+                7.14   19.10    3600/3600        conv_forward [6]
+                1.06    0.00    1200/1200        softmax_forward [8]
+                0.14    0.17    3600/3600        relu_forward [10]
+                0.12    0.09    3600/3600        pool_forward [12]
+                0.00    0.00    1200/1200        fc_forward [22]
+-----------------------------------------------
+                7.14   19.10    3600/3600        net_forward [5]
+[6]     93.2    7.14   19.10    3600         conv_forward [6]
+               19.01    0.00 8047411200/8112019542     volume_get [7]
+                0.09    0.00 27340800/126793634     volume_set [9]
+-----------------------------------------------
+                0.01    0.00 3686400/8112019542     copy_volume [14]
+                0.06    0.00 27340800/8112019542     pool_forward [12]
+                0.08    0.00 33581142/8112019542     relu_forward [10]
+               19.01    0.00 8047411200/8112019542     conv_forward [6]
+[7]     68.0   19.16    0.00 8112019542         volume_get [7]
+-----------------------------------------------
+                1.06    0.00    1200/1200        net_forward [5]
+[8]      3.8    1.06    0.00    1200         softmax_forward [8]
+-----------------------------------------------
+                0.00    0.00   19256/126793634     conv_load [20]
+                0.01    0.00 3686400/126793634     copy_volume [14]
+                0.02    0.00 6835200/126793634     pool_forward [12]
+                0.09    0.00 27340800/126793634     conv_forward [6]
+                0.09    0.00 27340800/126793634     relu_forward [10]
+                0.11    0.00 30720000/126793634     load_batch [11]
+                0.11    0.00 30851178/126793634     make_volume [13]
+[9]      1.6    0.44    0.00 126793634         volume_set [9]
+-----------------------------------------------
+                0.14    0.17    3600/3600        net_forward [5]
+[10]     1.1    0.14    0.17    3600         relu_forward [10]
+                0.09    0.00 27340800/126793634     volume_set [9]
+                0.08    0.00 33581142/8112019542     volume_get [7]
+-----------------------------------------------
+                0.08    0.23       1/1           run_classification [2]
+[11]     1.1    0.08    0.23       1         load_batch [11]
+                0.02    0.11   10000/10094       make_volume [13]
+                0.11    0.00 30720000/126793634     volume_set [9]
+-----------------------------------------------
+                0.12    0.09    3600/3600        net_forward [5]
+[12]     0.7    0.12    0.09    3600         pool_forward [12]
+                0.06    0.00 27340800/8112019542     volume_get [7]
+                0.02    0.00 6835200/126793634     volume_set [9]
+-----------------------------------------------
+                0.00    0.00      11/10094       make_fc_layer [19]
+                0.00    0.00      12/10094       make_network [16]
+                0.00    0.00      12/10094       make_batch [18]
+                0.00    0.00      59/10094       make_conv_layer [17]
+                0.02    0.11   10000/10094       load_batch [11]
+[13]     0.5    0.02    0.11   10094         make_volume [13]
+                0.11    0.00 30851178/126793634     volume_set [9]
+-----------------------------------------------
+                0.00    0.02    1200/1200        net_classify [4]
+[14]     0.1    0.00    0.02    1200         copy_volume [14]
+                0.01    0.00 3686400/126793634     volume_set [9]
+                0.01    0.00 3686400/8112019542     volume_get [7]
+-----------------------------------------------
+                0.00    0.00       1/1           run_classification [2]
+[15]     0.0    0.00    0.00       1         load_cnn_snapshot [15]
+                0.00    0.00       1/1           make_network [16]
+                0.00    0.00       3/3           conv_load [20]
+                0.00    0.00       1/1           fc_load [25]
+-----------------------------------------------
+                0.00    0.00       1/1           load_cnn_snapshot [15]
+[16]     0.0    0.00    0.00       1         make_network [16]
+                0.00    0.00       3/3           make_conv_layer [17]
+                0.00    0.00      12/10094       make_volume [13]
+                0.00    0.00       1/1           make_fc_layer [19]
+                0.00    0.00       3/3           make_relu_layer [24]
+                0.00    0.00       3/3           make_pool_layer [23]
+                0.00    0.00       1/1           make_softmax_layer [29]
+-----------------------------------------------
+                0.00    0.00       3/3           make_network [16]
+[17]     0.0    0.00    0.00       3         make_conv_layer [17]
+                0.00    0.00      59/10094       make_volume [13]
+-----------------------------------------------
+                0.00    0.00       1/1           net_classify [4]
+[18]     0.0    0.00    0.00       1         make_batch [18]
+                0.00    0.00      12/10094       make_volume [13]
+-----------------------------------------------
+                0.00    0.00       1/1           make_network [16]
+[19]     0.0    0.00    0.00       1         make_fc_layer [19]
+                0.00    0.00      11/10094       make_volume [13]
+-----------------------------------------------
+                0.00    0.00       3/3           load_cnn_snapshot [15]
+[20]     0.0    0.00    0.00       3         conv_load [20]
+                0.00    0.00   19256/126793634     volume_set [9]
+-----------------------------------------------
+                0.00    0.00      12/10094       free_batch [26]
+                0.00    0.00      82/10094       free_network [27]
+                0.00    0.00   10000/10094       run_classification [2]
+[21]     0.0    0.00    0.00   10094         free_volume [21]
+-----------------------------------------------
+                0.00    0.00    1200/1200        net_forward [5]
+[22]     0.0    0.00    0.00    1200         fc_forward [22]
+-----------------------------------------------
+                0.00    0.00       3/3           make_network [16]
+[23]     0.0    0.00    0.00       3         make_pool_layer [23]
+-----------------------------------------------
+                0.00    0.00       3/3           make_network [16]
+[24]     0.0    0.00    0.00       3         make_relu_layer [24]
+-----------------------------------------------
+                0.00    0.00       1/1           load_cnn_snapshot [15]
+[25]     0.0    0.00    0.00       1         fc_load [25]
+-----------------------------------------------
+                0.00    0.00       1/1           net_classify [4]
+[26]     0.0    0.00    0.00       1         free_batch [26]
+                0.00    0.00      12/10094       free_volume [21]
+-----------------------------------------------
+                0.00    0.00       1/1           run_classification [2]
+[27]     0.0    0.00    0.00       1         free_network [27]
+                0.00    0.00      82/10094       free_volume [21]
+-----------------------------------------------
+                0.00    0.00       1/1           run_classification [2]
+[28]     0.0    0.00    0.00       1         get_accuracy [28]
+-----------------------------------------------
+                0.00    0.00       1/1           make_network [16]
+[29]     0.0    0.00    0.00       1         make_softmax_layer [29]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+   [6] conv_forward           [11] load_batch              [4] net_classify
+  [20] conv_load              [15] load_cnn_snapshot       [5] net_forward
+  [14] copy_volume            [18] make_batch             [12] pool_forward
+   [1] do_benchmark           [17] make_conv_layer        [10] relu_forward
+  [22] fc_forward             [19] make_fc_layer           [2] run_classification
+  [25] fc_load                [16] make_network            [8] softmax_forward
+  [26] free_batch             [23] make_pool_layer         [7] volume_get
+  [27] free_network           [24] make_relu_layer         [9] volume_set
+  [21] free_volume            [29] make_softmax_layer
+  [28] get_accuracy           [13] make_volume
